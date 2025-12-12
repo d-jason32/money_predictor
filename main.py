@@ -13,19 +13,7 @@ from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms, models
 from tqdm import tqdm
 
-import kagglehub
-
-# Kaggle dataset identifier for USD bill classification photos
-DATASET_ID = "aishwaryatechie/usd-bill-classification-dataset"
-
-
-def download_dataset() -> str:
-    """Download the training photos via kagglehub and return the local path."""
-    print(f"Downloading dataset {DATASET_ID} via kagglehub...")
-    path = kagglehub.dataset_download(DATASET_ID)
-    print("Path to dataset files:", path)
-    return str(path)
-
+DEFAULT_DATA_DIR = Path(__file__).resolve().parent / "USA currency"
 
 @dataclass
 class TrainConfig:
@@ -206,10 +194,8 @@ def train(cfg: TrainConfig) -> None:
 
 def parse_args() -> TrainConfig:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data_dir", type=str, default=None,
-                    help="Path to dataset root. Leave empty to download automatically with --download_dataset.")
-    ap.add_argument("--download_dataset", action="store_true",
-                    help="Download the USD bill classification dataset via kagglehub when --data_dir is not provided.")
+    ap.add_argument("--data_dir", type=str, default=str(DEFAULT_DATA_DIR),
+                    help="Path to dataset root. Defaults to the bundled 'USA currency' dataset in the repo.")
     ap.add_argument("--out_dir", type=str, default="out_usd_model")
     ap.add_argument("--epochs", type=int, default=15)
     ap.add_argument("--batch_size", type=int, default=32)
@@ -222,15 +208,14 @@ def parse_args() -> TrainConfig:
     ap.add_argument("--device", type=str, default="auto", choices=["auto", "cpu", "cuda"])
     args = ap.parse_args()
 
-    data_dir = args.data_dir
-    if data_dir is None:
-        if args.download_dataset:
-            data_dir = download_dataset()
-        else:
-            raise ValueError("Please provide --data_dir or set --download_dataset to fetch it automatically.")
+    data_dir = Path(args.data_dir).expanduser().resolve()
+    if not data_dir.exists():
+        raise FileNotFoundError(
+            f"Dataset directory not found: {data_dir}. Provide --data_dir to point to your dataset."
+        )
 
     return TrainConfig(
-        data_dir=data_dir,
+        data_dir=str(data_dir),
         out_dir=args.out_dir,
         epochs=args.epochs,
         batch_size=args.batch_size,
