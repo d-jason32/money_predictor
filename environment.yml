@@ -1,0 +1,17 @@
+name: money_predictor
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch::pytorch>=2.2
+  - pytorch::torchvision
+  - pytorch::cpuonly
+  - numpy
+  - tqdm
+  - pillow
+  - pip
+  - pip:
+      - kagglehub
+
