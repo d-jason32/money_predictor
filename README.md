@@ -1,4 +1,15 @@
-Dataset from https://www.kaggle.com/datasets/aishwaryatechie/usd-bill-classification-dataset. This project trains a MobileNetV3-based classifier to recognize USD bill denominations from images and provides a simple CLI for inference against the bundled dataset or your own photos.
+Dataset from https://www.kaggle.com/datasets/aishwaryatechie/usd-bill-classification-dataset. 
+
+## Introduction
+Lightweight image classification project that recognizes USD bill denominations. The repo already includes the dataset and a trained model, so you can run inference or continue training without additional downloads.
+
+## How it works
+We fine-tune MobileNetV3-Large on the provided USD bill dataset with standard augmentations, save the best checkpoint and label map, and offer a CLI (`predict.py`) to classify new images using the trained weights.
+
+## Tech Stack
+- Python 3.10, PyTorch, Torchvision, TorchTriton
+- MobileNetV3-Large backbone
+- TQDM for progress, Pillow for image IO, Kaggle dataset (bundled locally)
 
 ## 1 Dollar Image
 ![img.png](img.png)
