@@ -22,9 +22,9 @@ Top candidates:
   $50 bill (Dollar)  [class='50 Dollar']: 0.0004
   $2 bill (Doolar)  [class='2 Doolar']: 0.0003
 ```
-## Inference 50 Dollar Image
+## 50 Dollar Image
 ![img_1.png](img_1.png)
-## Result
+## Inference Result
 ```
 Predicted amount: $50 bill (Dollar)  [class='50 Dollar'] (p=1.0000)
 
