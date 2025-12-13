@@ -26,7 +26,8 @@ Top candidates:
 ## 100 Dollar Image
 ![img_2.png](img_2.png)
 ## Result
-```Predicted amount: $100 bill (Dollar)  [class='100 Dollar'] (p=1.0000)
+```
+Predicted amount: $100 bill (Dollar)  [class='100 Dollar'] (p=1.0000)
 
 Top candidates:
   $100 bill (Dollar)  [class='100 Dollar']: 1.0000
