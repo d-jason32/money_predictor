@@ -1,9 +1,8 @@
-Dataset from:
-https://www.kaggle.com/datasets/aishwaryatechie/usd-bill-classification-dataset
+Dataset from https://www.kaggle.com/datasets/aishwaryatechie/usd-bill-classification-dataset. This project trains a MobileNetV3-based classifier to recognize USD bill denominations from images and provides a simple CLI for inference against the bundled dataset or your own photos.
 
 ## 1 Dollar Image
 ![img.png](img.png)
-## Result 
+## Inference Result 
 ```
 Predicted amount: $1 bill (Dollar)  [class='1 Dollar'] (p=0.9992)
 
@@ -12,7 +11,7 @@ Top candidates:
   $50 bill (Dollar)  [class='50 Dollar']: 0.0004
   $2 bill (Doolar)  [class='2 Doolar']: 0.0003
 ```
-## 50 Dollar Image
+## Inference 50 Dollar Image
 ![img_1.png](img_1.png)
 ## Result
 ```
@@ -25,7 +24,7 @@ Top candidates:
 ```
 ## 100 Dollar Image
 ![img_2.png](img_2.png)
-## Result
+## Inference Result
 ```
 Predicted amount: $100 bill (Dollar)  [class='100 Dollar'] (p=1.0000)
 
